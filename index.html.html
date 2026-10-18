@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en-IE">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Fisky – Bookkeeping, Form 11 & CRO filings for Irish businesses</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=Figtree:wght@400;500;600&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com/3.4.17"></script>
+<style>
+:root{--bg:#F5F8F6;--card:#FFFFFF;--ink:#0E2B22;--mute:#5C7068;--line:#DCE5E0;--brand:#0F6B4F;--brand-ink:#FFFFFF;--accent:#F59E3B;--soft:#E6F1EC;--neg:#B4442F;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0B1713;--card:#12241D;--ink:#E8F2ED;--mute:#8FA79C;--line:#23392F;--brand:#3FB78A;--brand-ink:#05120D;--soft:#17332A;--neg:#F08A74}}
+:root[data-theme="dark"]{--bg:#0B1713;--card:#12241D;--ink:#E8F2ED;--mute:#8FA79C;--line:#23392F;--brand:#3FB78A;--brand-ink:#05120D;--soft:#17332A;--neg:#F08A74}
+html{scroll-padding-top:env(safe-area-inset-top,0px);scroll-behavior:smooth}
+body{background:var(--bg);color:var(--ink);font-family:Figtree,system-ui,sans-serif;margin:0}
+h1,h2,h3,.logo{font-family:'Bricolage Grotesque',Figtree,sans-serif;letter-spacing:-.02em}
+.card{background:var(--card);border:1px solid var(--line);border-radius:16px}
+.mute{color:var(--mute)}
+.btn{background:var(--brand);color:var(--brand-ink);font-weight:600;border-radius:10px;padding:.8rem 1.25rem;transition:filter .15s}
+.btn:hover{filter:brightness(1.08)}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.chip{border:1px solid var(--line);border-radius:999px;padding:.25rem .75rem;font-size:.8rem;color:var(--mute)}
+.chip[aria-pressed=true]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.seg button{padding:.45rem .9rem;border-radius:8px;font-weight:600;font-size:.9rem;color:var(--mute)}
+.seg button[aria-selected=true]{background:var(--card);color:var(--ink);box-shadow:0 1px 3px rgba(0,0,0,.15)}
+select{background:var(--soft);color:var(--ink);border-radius:8px;padding:.2rem .4rem;font-size:.8rem;border:1px solid var(--line)}
+.row{display:flex;align-items:center;gap:.75rem;padding:.7rem 0;border-top:1px solid var(--line)}
+.row:first-child{border-top:0}
+.num{font-variant-numeric:tabular-nums}
+.pos{color:var(--brand)}
+@keyframes pop{from{transform:scale(.97);opacity:.4}to{transform:none;opacity:1}}
+.pop{animation:pop .25s ease-out}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;scroll-behavior:auto!important}}
+.pane[hidden]{display:none}
+</style>
+</head>
+<body>
+<header class="max-w-6xl mx-auto px-5 py-5 flex items-center justify-between">
+  <a href="#top" class="logo text-xl font-bold flex items-center gap-2"><span class="inline-grid place-items-center w-8 h-8 rounded-lg" style="background:var(--brand);color:var(--brand-ink)">F</span>Fisky</a>
+  <nav class="flex items-center gap-5 text-sm font-medium">
+    <a href="#preview" class="mute hover:opacity-80">See the dashboard</a>
+    <a href="#waitlist" class="btn !py-2 !px-4 text-sm">Join the beta waitlist</a>
+  </nav>
+</header>
+
+<main id="top">
+<section class="max-w-6xl mx-auto px-5 pt-10 pb-16 grid lg:grid-cols-[1.2fr_1fr] gap-12 items-center">
+  <div>
+    <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold leading-[1.05]">Automated Bookkeeping, Form 11 &amp; CRO Filings for Irish Sole Traders and Small Companies.</h1>
+    <p class="mt-5 text-xl sm:text-2xl font-medium">No accountant required. Just €15/month.</p>
+    <p class="mt-3 mute max-w-xl">Connect AIB or Revolut, and Fisky sorts every transaction, tracks your allowable expenses, keeps a running Form 11 or corporation tax estimate, and prepares your CRO annual return so there are no surprises.</p>
+
+    <form id="waitlist" class="mt-8 max-w-xl" novalidate>
+      <label for="email" class="block text-sm font-semibold mb-2">Get early access when the beta opens</label>
+      <div class="flex flex-col sm:flex-row gap-3">
+        <input id="email" type="email" inputmode="email" autocomplete="email" placeholder="you@yourbusiness.ie" class="flex-1 rounded-[10px] px-4 py-3 border text-base" style="background:var(--card);border-color:var(--line);color:var(--ink)" aria-describedby="wl-msg">
+        <button class="btn" type="submit">Join the Beta Waitlist</button>
+      </div>
+      <p id="wl-msg" class="mt-3 text-sm mute" role="status" aria-live="polite">Free during beta. No card needed. Unsubscribe anytime.</p>
+    </form>
+    <div class="mt-6 flex flex-wrap gap-2">
+      <span class="chip">Revenue-ready bank feeds</span><span class="chip">Form 11 &amp; CT1 ROS-ready figures</span><span class="chip">CRO annual returns</span><span class="chip">VAT-aware categories</span>
+    </div>
+  </div>
+
+  <div class="card p-5 shadow-sm" aria-label="Form 11 estimate teaser">
+    <p class="text-sm mute">Estimated tax owed this year</p>
+    <p id="teaser" class="logo text-5xl font-bold mt-1 num">€0</p>
+    <p class="text-sm mute mt-2">Drag to try it with your own profit:</p>
+    <input id="teaserRange" type="range" min="10000" max="120000" step="1000" value="52000" class="w-full mt-2" style="accent-color:var(--brand)" aria-label="Annual profit">
+    <div class="flex justify-between text-sm mt-1"><span class="mute">Profit</span><span id="teaserProfit" class="font-semibold num">€52,000</span></div>
+    <p class="text-xs mute mt-4">Income tax + USC + PRSI (Class S), single person, illustrative rates.</p>
+  </div>
+</section>
+
+<section id="preview" class="max-w-6xl mx-auto px-5 pb-20">
+  <div class="flex flex-wrap items-end justify-between gap-4 mb-6">
+    <div>
+      <h2 class="text-3xl font-bold">Your books, already done</h2>
+      <p class="mute mt-1">This is a live preview with dummy data. Try changing a category.</p>
+    </div>
+    <div class="seg flex p-1 rounded-xl" style="background:var(--soft)" role="tablist" aria-label="Dashboard view">
+      <button role="tab" aria-selected="true" data-tab="all">Dashboard</button>
+      <button role="tab" aria-selected="false" data-tab="bank">Bank feed</button>
+      <button role="tab" aria-selected="false" data-tab="exp">Expenses</button>
+      <button role="tab" aria-selected="false" data-tab="tax">Tax & filing</button>
+    </div>
+  </div>
+
+  <div class="card overflow-hidden shadow-sm">
+    <div class="flex items-center gap-2 px-4 py-3 border-b" style="border-color:var(--line)">
+      <span class="w-3 h-3 rounded-full" style="background:#E5604D"></span><span class="w-3 h-3 rounded-full" style="background:#F2B84B"></span><span class="w-3 h-3 rounded-full" style="background:#4DBF8A"></span>
+      <span class="ml-3 text-xs mute">app.fisky.ie / dashboard</span>
+    </div>
+    <div id="dash" class="p-4 sm:p-6 grid gap-5 lg:grid-cols-[1.3fr_1fr]">
+      <div class="pane" data-pane="bank" style="border:1px solid var(--line);border-radius:14px;padding:1rem">
+        <div class="flex flex-wrap items-center justify-between gap-2 mb-2">
+          <h3 class="text-lg font-semibold">Bank feed</h3>
+          <div class="flex gap-2" id="bankChips">
+            <button class="chip" aria-pressed="true" data-b="All">All</button>
+            <button class="chip" aria-pressed="false" data-b="AIB">AIB</button>
+            <button class="chip" aria-pressed="false" data-b="Revolut">Revolut</button>
+          </div>
+        </div>
+        <div id="feed"></div>
+      </div>
+
+      <div class="grid gap-5 content-start">
+        <div class="pane" data-pane="tax" style="border:1px solid var(--line);border-radius:14px;padding:1rem;background:var(--soft)">
+          <div class="flex flex-wrap items-center justify-between gap-2">
+            <h3 id="taxTitle" class="text-lg font-semibold">Form 11 estimate</h3>
+            <div id="modeSeg" class="seg flex p-1 rounded-lg" style="background:var(--card)" role="group" aria-label="Business type"><button data-mode="st" aria-selected="true">Sole trader</button><button data-mode="co" aria-selected="false">Company</button></div>
+          </div>
+          <p class="mute text-sm mt-1">Estimated total to pay</p>
+          <p id="taxTotal" class="logo text-4xl font-bold num pop">€0</p>
+          <dl id="taxRows" class="mt-3 text-sm"></dl>
+          <p id="taxNote" class="text-xs mute mt-3">Estimate only, based on illustrative single-person rates and credits. Not tax advice.</p>
+          <button id="exportBtn" class="btn w-full mt-3 text-sm">Prepare Form 11 draft</button>
+        </div>
+
+        <div class="pane" data-pane="exp" style="border:1px solid var(--line);border-radius:14px;padding:1rem">
+          <h3 class="text-lg font-semibold mb-2">Expenses by category</h3>
+          <div id="cats"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer class="max-w-6xl mx-auto px-5 pb-12 text-sm mute">© 2026 Fisky. Prototype with dummy data. Not affiliated with AIB, Revolut or Revenue.</footer>
+<div id="toast" class="fixed left-1/2 -translate-x-1/2 bottom-6 px-4 py-2 rounded-lg text-sm font-medium hidden" style="background:var(--ink);color:var(--bg);margin-bottom:env(safe-area-inset-bottom,0px)" role="status"></div>
+
+<script>
+const $=s=>document.querySelector(s), eur=n=>'€'+Math.round(n).toLocaleString('en-IE');
+const eur2=n=>(n<0?'-':'+')+'€'+Math.abs(n).toLocaleString('en-IE',{minimumFractionDigits:2,maximumFractionDigits:2});
+const toast=m=>{const t=$('#toast');t.textContent=m;t.classList.remove('hidden');clearTimeout(toast.t);toast.t=setTimeout(()=>t.classList.add('hidden'),2400)};
+
+/* Tax estimate (illustrative single-person rates) */
+function calc(profit){
+  profit=Math.max(0,profit);
+  const it=Math.max(0,Math.min(profit,44000)*.2+Math.max(0,profit-44000)*.4-4000);
+  const bands=[[12012,.005],[27382,.02],[70044,.03],[Infinity,.08]];let usc=0,prev=0;
+  if(profit>13000){for(const[c,r]of bands){if(profit>prev)usc+=(Math.min(profit,c)-prev)*r;prev=c}}
+  const prsi=profit>5000?Math.max(500,profit*.04):0;
+  return{it,usc,prsi,total:it+usc+prsi};
+}
+
+/* Waitlist */
+const form=$('#waitlist'),msg=$('#wl-msg');let joined=0;
+try{joined=+localStorage.getItem('bokioie_joined')||0}catch(e){}
+form.addEventListener('submit',e=>{
+  e.preventDefault();const v=$('#email').value.trim();
+  if(!/^[^@\s]+@[^@\s]+\.[^@\s]{2,}$/.test(v)){msg.textContent='Enter a valid email address, like you@yourbusiness.ie.';msg.style.color='var(--neg)';$('#email').focus();return}
+  try{localStorage.setItem('bokioie_joined','1')}catch(e){}
+  msg.style.color='var(--brand)';msg.textContent="You're on the list. We'll email "+v+' when the beta opens.';
+  form.querySelector('button').textContent='You’re on the list';form.querySelector('button').disabled=true;$('#email').disabled=true;
+});
+
+/* Teaser slider */
+function teaser(){const p=+$('#teaserRange').value,t=calc(p).total;$('#teaser').textContent=eur(t);$('#teaserProfit').textContent=eur(p)}
+$('#teaserRange').addEventListener('input',teaser);teaser();
+
+/* Dashboard data */
+const CATS=['Software','Travel','Utilities','Meals','Office','Personal (not deductible)'];
+let bank='All',mode='st';
+const tx=[
+ {d:'14 Oct',b:'AIB',n:'Brennan Design – invoice 031',a:2400,c:'Income'},
+ {d:'14 Oct',b:'AIB',n:'Adobe Creative Cloud',a:-66.49,c:'Software'},
+ {d:'13 Oct',b:'Revolut',n:'Kilkenny Media – invoice 032',a:1850,c:'Income'},
+ {d:'12 Oct',b:'AIB',n:'Irish Rail – Dublin to Cork',a:-28.40,c:'Travel'},
+ {d:'11 Oct',b:'Revolut',n:'Notion Labs',a:-9.60,c:'Software'},
+ {d:'10 Oct',b:'AIB',n:'Electric Ireland (home office share)',a:-92.10,c:'Utilities'},
+ {d:'09 Oct',b:'Revolut',n:'Client coffee – Brew Dublin',a:-6.20,c:'Meals'},
+ {d:'08 Oct',b:'Revolut',n:'Tesco Express',a:-82.30,c:'Personal (not deductible)'},
+ {d:'07 Oct',b:'Revolut',n:'Eir broadband',a:-49.00,c:'Utilities'}
+];
+const base={income:41200,exp:3150}; /* earlier months */
+
+function render(){
+  $('#feed').innerHTML=tx.map((t,i)=>({t,i})).filter(({t})=>bank==='All'||t.b===bank).map(({t,i})=>`
+   <div class="row">
+     <div class="w-9 h-9 rounded-lg grid place-items-center text-xs font-bold shrink-0" style="background:${t.b==='AIB'?'#7A2E8E':'#1D2B3A'};color:#fff" aria-label="${t.b}">${t.b==='AIB'?'AIB':'Rev'}</div>
+     <div class="min-w-0 flex-1"><p class="font-medium truncate">${t.n}</p><p class="text-xs mute">${t.d} · ${t.b}</p></div>
+     <div class="text-right">
+       <p class="num font-semibold ${t.a>0?'pos':''}">${eur2(t.a)}</p>
+       ${t.a>0?'<span class="text-xs mute">Income</span>':`<select data-i="${i}" aria-label="Category for ${t.n}">${CATS.map(c=>`<option ${c===t.c?'selected':''}>${c}</option>`).join('')}</select>`}
+     </div></div>`).join('');
+
+  const ded=tx.filter(t=>t.a<0&&!t.c.startsWith('Personal'));
+  const byCat={};ded.forEach(t=>byCat[t.c]=(byCat[t.c]||0)+Math.abs(t.a));
+  const feedExp=Object.values(byCat).reduce((a,b)=>a+b,0),max=Math.max(1,...Object.values(byCat));
+  $('#cats').innerHTML=Object.entries(byCat).sort((a,b)=>b[1]-a[1]).map(([c,v])=>`
+    <div class="py-2"><div class="flex justify-between text-sm"><span>${c}</span><span class="num font-medium">${eur2(-v).replace('-','')}</span></div>
+    <div class="h-1.5 rounded-full mt-1" style="background:var(--soft)"><div class="h-full rounded-full" style="width:${v/max*100}%;background:var(--accent)"></div></div></div>`).join('')
+    +`<p class="text-xs mute mt-2">${ded.length} allowable items from this month's feed</p>`;
+
+  const inc=base.income+tx.filter(t=>t.a>0).reduce((a,t)=>a+t.a,0), exp=base.exp+feedExp, profit=inc-exp, co=mode==='co', r=co?{ct:Math.max(0,profit)*.125}:calc(profit);
+  $('#taxTotal').textContent=eur(co?r.ct:r.total);
+  $('#taxTitle').textContent=co?'Corporation tax (CT1) estimate':'Form 11 estimate';
+  $('#exportBtn').textContent=co?'Prepare CT1 & CRO annual return':'Prepare Form 11 draft';
+  $('#taxNote').textContent=co?'Illustrative 12.5% trading rate, before reliefs and preliminary tax rules. Not tax advice.':'Estimate only, based on illustrative single-person rates and credits. Not tax advice.';
+  const rows=co?[['Turnover',inc],['Allowable expenses',-exp],['Taxable profit',profit,1],['Corporation tax (12.5%)',r.ct],['CRO annual return (B1)','Auto-prepared']]:[['Turnover',inc],['Allowable expenses',-exp],['Taxable profit',profit,1],['Income tax',r.it],['USC',r.usc],['PRSI (Class S)',r.prsi]];
+  $('#taxRows').innerHTML=rows.map(([k,v,b])=>`<div class="flex justify-between py-1 ${b?'font-semibold border-y my-1':''}" style="border-color:var(--line)"><dt class="${b?'':'mute'}">${k}</dt><dd class="num">${typeof v==='string'?v:(v<0?'-':'')+eur(Math.abs(v))}</dd></div>`).join('');
+  const tc=$('#taxTotal');tc.classList.remove('pop');void tc.offsetWidth;tc.classList.add('pop');
+}
+$('#feed').addEventListener('change',e=>{if(e.target.matches('select')){const t=tx[+e.target.dataset.i];t.c=e.target.value;render();toast(t.c.startsWith('Personal')?'Marked personal. Removed from Form 11 expenses.':'Categorised as '+t.c+'. Form 11 estimate updated.')}});
+$('#bankChips').addEventListener('click',e=>{const b=e.target.closest('[data-b]');if(!b)return;bank=b.dataset.b;document.querySelectorAll('#bankChips .chip').forEach(c=>c.setAttribute('aria-pressed',c===b));render()});
+$('#exportBtn').addEventListener('click',()=>toast(mode==='co'?'CT1 and CRO B1 drafts ready (demo). ROS and CRO submission come in the beta.':'Form 11 draft ready (demo). ROS upload comes in the beta.'));
+$('#modeSeg').addEventListener('click',e=>{const b=e.target.closest('[data-mode]');if(!b)return;mode=b.dataset.mode;document.querySelectorAll('#modeSeg button').forEach(x=>x.setAttribute('aria-selected',x===b));render()});
+
+/* Tabs */
+document.querySelectorAll('[data-tab]').forEach(b=>b.addEventListener('click',()=>{
+  document.querySelectorAll('[data-tab]').forEach(x=>x.setAttribute('aria-selected',x===b));
+  const t=b.dataset.tab;document.querySelectorAll('.pane').forEach(p=>p.hidden=!(t==='all'||p.dataset.pane===t));
+  $('#dash').style.gridTemplateColumns=t==='all'?'':'1fr';
+}));
+render();
+</script>
+</body>
+</html>
